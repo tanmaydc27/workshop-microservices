@@ -1,0 +1,21 @@
+version: '3.4'
+
+services: 
+  eureka:
+    image: steeltoeoss/eureka-server
+    hostname: eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    environment:
+        RABBITMQ_ERLANG_COOKIE: guest
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - 5672:5672
+      - 15672:15672
+    hostname: rabbitmq
